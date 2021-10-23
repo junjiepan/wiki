@@ -89,7 +89,7 @@ for (let i = 0; i < 23; i++) {
 }
 
 export default defineComponent({
-  name: 'Home',
+  name: 'home',
   setup(){
     const ebooks = ref();
 
