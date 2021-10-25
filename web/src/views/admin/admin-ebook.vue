@@ -24,8 +24,23 @@
 
         <template v-slot:action="{ text,record }">
           <a-space>
-            <a-button type="primary" @click="edit(record)">编辑</a-button>
-            <a-button danger >删除</a-button>
+            <a-button type="primary" @click="edit(record)">
+              编辑
+            </a-button>
+
+            <a-popconfirm
+                title="Are you sure delete this data?"
+                ok-text="Yes"
+                cancel-text="No"
+                @confirm="handleDelete(record.id)"
+                @cancel="cancel"
+            >
+              <a-button danger >
+                删除
+              </a-button>
+            </a-popconfirm>
+
+
           </a-space>
         </template>
 
@@ -185,6 +200,19 @@ export default defineComponent({
       ebook.value = {};
     };
 
+    const handleDelete = (id: number) => {
+      axios.delete("/ebook/delete/" + id).then((response) => {
+        const data = response.data;  //data = commonResp
+        if(data.success){
+          //重新加载列表
+          handleQuery({
+            page: pagination.value.current,
+            size: pagination.value.pageSize,
+          });
+        }
+      });
+    };
+
     onMounted(() => {
       handleQuery({
         page: 1,
@@ -205,7 +233,8 @@ export default defineComponent({
       ebook,
       modalVisible,
       modalLoading,
-      handleModalOk
+      handleModalOk,
+      handleDelete
     }
   }
 });
