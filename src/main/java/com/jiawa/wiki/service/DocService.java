@@ -96,7 +96,10 @@ public class DocService {
         } else {
             // 更新
             docMapper.updateByPrimaryKey(doc);
-            contentMapper.updateByPrimaryKeyWithBLOBs(content);
+            int count = contentMapper.updateByPrimaryKeyWithBLOBs(content);
+            if(count == 0) {
+                contentMapper.insert(content);
+            }
         }
     }
 
