@@ -43,7 +43,6 @@
                 ok-text="Yes"
                 cancel-text="No"
                 @confirm="handleDelete(record.id)"
-                @cancel="cancel"
             >
               <a-button danger >
                 删除
