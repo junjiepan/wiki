@@ -86,7 +86,9 @@ public class UserService {
             }
         } else {
             // 更新
-            userMapper.updateByPrimaryKey(user);
+            user.setLoginName(null);
+            user.setPassword(null);
+            userMapper.updateByPrimaryKeySelective(user);
         }
     }
 
