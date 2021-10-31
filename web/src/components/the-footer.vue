@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer style="text-align: center">
-    WiKi Design ©2021 Welcome {{user.name}}
+    WiKi Design ©2021 <span v-show="user.id"> Welcome {{user.name}} </span>
   </a-layout-footer>
 </template>
 
