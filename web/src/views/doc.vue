@@ -164,10 +164,10 @@ export default defineComponent({
 
 /* 和antdv p冲突，覆盖掉 */
 .wangeditor blockquote p {
-  font-family:"YouYuan";
-  margin: 20px 10px !important;
-  font-size: 16px !important;
-  font-weight:600;
+  font-family:"Consolas";
+  margin: 10px 10px !important;
+  font-size: 18px !important;
+  font-weight:400;
 }
 
 /* 点赞 */
