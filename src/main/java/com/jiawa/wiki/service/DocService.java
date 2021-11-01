@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.jiawa.wiki.domain.Content;
 import com.jiawa.wiki.domain.Doc;
 import com.jiawa.wiki.domain.DocExample;
+import com.jiawa.wiki.exception.BusinessException;
+import com.jiawa.wiki.exception.BusinessExceptionCode;
 import com.jiawa.wiki.mapper.ContentMapper;
 import com.jiawa.wiki.mapper.DocMapper;
 import com.jiawa.wiki.mapper.DocMapperCust;
@@ -132,6 +134,11 @@ public class DocService {
         }
     }
 
-
+    /**
+     * 点赞
+     */
+    public void vote(Long id) {
+        docMapperCust.increaseVoteCount(id);
+    }
 }
 
