@@ -32,13 +32,21 @@
         <h1>欢迎使用wiki知识库</h1>
       </div>
 
-      <a-list v-show = "!isShowWelcome" item-layout="vertical" size="large" :grid="{ gutter: 20, column: 3}"  :data-source="ebooks">
+      <a-list v-show="!isShowWelcome" item-layout="vertical" size="large" :grid="{ gutter: 20, column: 3 }" :data-source="ebooks">
         <template #renderItem="{ item }">
           <a-list-item key="item.name">
             <template #actions>
-              <span v-for="{ type, text } in actions" :key="type">
-                <component :is="type" style="margin-right: 8px" />
-                {{ text }}
+              <span>
+                <component v-bind:is="'FileOutlined'" style="margin-right: 8px" />
+                {{ item.docCount }}
+              </span>
+              <span>
+                <component v-bind:is="'UserOutlined'" style="margin-right: 8px" />
+                {{ item.viewCount }}
+              </span>
+              <span>
+                <component v-bind:is="'LikeOutlined'" style="margin-right: 8px" />
+                {{ item.voteCount }}
               </span>
             </template>
             <a-list-item-meta :description="item.description">
@@ -47,7 +55,7 @@
                   {{ item.name }}
                 </router-link>
               </template>
-              <template #avatar><a-avatar :src="item.cover" /></template>
+              <template #avatar><a-avatar :src="item.cover"/></template>
             </a-list-item-meta>
           </a-list-item>
         </template>
@@ -131,16 +139,11 @@ export default defineComponent({
       },
       pageSize: 3,
     };
-    const actions: Record<string, string>[] = [
-      { type: 'StarOutlined', text: '156' },
-      { type: 'LikeOutlined', text: '156' },
-      { type: 'MessageOutlined', text: '2' },
-    ];
+
 
     return {
       ebooks,
       pagination,
-      actions,
       handleClick,
       level1,
 

@@ -72,7 +72,7 @@ public class Ebook {
     }
 
     public void setDocCount(Integer docCount) {
-        this.docCount = 0;
+        this.docCount = docCount;
     }
 
     public Integer getViewCount() {
@@ -80,7 +80,7 @@ public class Ebook {
     }
 
     public void setViewCount(Integer viewCount) {
-        this.viewCount = 0;
+        this.viewCount = viewCount;
     }
 
     public Integer getVoteCount() {
@@ -88,7 +88,7 @@ public class Ebook {
     }
 
     public void setVoteCount(Integer voteCount) {
-        this.voteCount = 0;
+        this.voteCount = voteCount;
     }
 
     @Override
