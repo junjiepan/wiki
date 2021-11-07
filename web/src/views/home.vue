@@ -26,7 +26,7 @@
         :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
     >
       <div class = "welcome" v-show = "isShowWelcome">
-        <h1>欢迎使用wiki知识库</h1>
+        <the-welcome></the-welcome>
       </div>
 
       <a-list v-show="!isShowWelcome" item-layout="vertical" size="large" :grid="{ gutter: 20, column: 3 }" :data-source="ebooks">
@@ -68,9 +68,15 @@ import { defineComponent, onMounted, ref} from 'vue';
 import axios from 'axios';
 import { message } from 'ant-design-vue';
 import {Tool} from "@/util/tool"
+import TheWelcome from '@/components/the-welcome.vue';
+import TheHeader from "@/components/the-header.vue";
+import TheFooter from "@/components/the-footer.vue";
 
 export default defineComponent({
   name: 'home',
+  components: {
+    TheWelcome
+  },
   setup(){
     const ebooks = ref();
 
